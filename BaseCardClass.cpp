@@ -26,7 +26,7 @@ int BaseCardClass::minusCardAction(int playerPoints)
 
 	if (newplayerPoints < 1)
 	{
-		newplayerPoints + 1;
+		newplayerPoints =playerPoints + 1;
 	}
 	else
 	{

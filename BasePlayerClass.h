@@ -9,7 +9,7 @@ public:
 	BasePlayerClass();
 	void cardAffect();
 	void getVector(vector<BaseCardClass> card);
-	void drawFromHand(vector<BaseCardClass> cards);
+	void drawFromDeck(vector<BaseCardClass> cards);
 	vector<BaseCardClass> getPlayerHand();
 	void displayHand();
 	~BasePlayerClass();

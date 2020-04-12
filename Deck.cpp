@@ -2,11 +2,11 @@
 #include "pch.h"
 #include <iostream>
 
-vector<BaseCardClass> deckofCards;
 
 Deck::Deck()
 {
 	genrateCards();
+	//deckofCards;
 }
 
 void Deck::MinusCardGeneration(int cardValue)
@@ -67,9 +67,64 @@ void Deck::removeDeck()
 	return;
 }
 
+
 vector <BaseCardClass> Deck::getDeck()
 {
 	return deckofCards;
+}
+
+vector <BaseCardClass> Deck::getMinusCard(int amount)
+{
+	vector<BaseCardClass> retrival = vector <BaseCardClass>();
+	for (size_t i = 0; i < deckofCards.size(); i++)
+	{
+		if (retrival.size() == amount) {
+			return retrival;
+		}
+		if (deckofCards.at(i).getCardType() == "Minus") {
+			retrival.push_back(deckofCards.at(i));
+		}
+	}
+	return retrival;
+//		BaseCardClass c = BaseCardClass("Minus");
+//	for (size_t i = 0; i < deckofCards.size(); i++)
+//	{
+//		if (deckofCards.at(i).getCardType = "Minus")
+//		{
+	//		return deckofCards.at(i);
+		//}
+//	}// return c;
+}
+
+
+vector <BaseCardClass> Deck::getPlusCard(int amount)
+{
+	vector<BaseCardClass> retrival = vector <BaseCardClass>();
+	for (size_t i = 0; i < deckofCards.size(); i++)
+	{
+		if (retrival.size() == amount) {
+			return retrival;
+		}
+		if (deckofCards.at(i).getCardType() == "Plus") {
+			retrival.push_back(deckofCards.at(i));
+		}
+	}
+	return retrival;
+}
+
+vector <BaseCardClass> Deck::getstealCard(int amount)
+{
+	vector<BaseCardClass> retrival = vector <BaseCardClass> ();
+	for (size_t i = 0; i < deckofCards.size(); i++)
+	{
+		if (retrival.size() == amount){
+			return retrival;
+		}
+		if (deckofCards.at(i).getCardType() == "Steal"){	
+			retrival.push_back(deckofCards.at(i));
+		}
+	}
+	return retrival;
 }
 
 void Deck::displayDeck()

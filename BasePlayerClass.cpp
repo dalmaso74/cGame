@@ -25,7 +25,7 @@ void BasePlayerClass::getVector(vector<BaseCardClass> card)
 
 }
 
-void BasePlayerClass::drawFromHand(vector<BaseCardClass> cards)
+void BasePlayerClass::drawFromDeck(vector<BaseCardClass> cards)
 {
 	playersHand.insert(playersHand.end(), cards.begin(), cards.end());
 }

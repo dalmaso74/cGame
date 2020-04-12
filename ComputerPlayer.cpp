@@ -37,7 +37,7 @@ void ComputerPlayer::cardAffect(BaseCardClass card)
 	else
 	{
 		tempPoints = computerPoints;
-		cout << " The current Points is " + this->getComputerPoints;
+		cout << " The current Points is " + this->getComputerPoints();
 	}
 }
 

@@ -156,6 +156,7 @@
     <ClCompile Include="card-G.cpp" />
     <ClCompile Include="ComputerPlayer.cpp" />
     <ClCompile Include="Deck.cpp" />
+    <ClCompile Include="designClass.cpp" />
     <ClCompile Include="pch.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +164,7 @@
     <ClInclude Include="BasePlayerClass.h" />
     <ClInclude Include="ComputerPlayer.h" />
     <ClInclude Include="Deck.h" />
+    <ClInclude Include="designClass.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
