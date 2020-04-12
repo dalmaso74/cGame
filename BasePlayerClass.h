@@ -1,13 +1,15 @@
 #pragma once
 #include "Deck.h"
+#include <string>
 #include <vector>
+
 class BasePlayerClass
 {
 public:
 	BasePlayerClass();
 	void cardAffect();
-	void drawFromDeck();
-	void addToHand(BaseCardClass);
+	void getVector(vector<BaseCardClass> card);
+	void drawFromHand(vector<BaseCardClass> cards);
 	vector<BaseCardClass> getPlayerHand();
 	void displayHand();
 	~BasePlayerClass();

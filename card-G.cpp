@@ -1,11 +1,16 @@
 // card-G.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
-
+#include "Deck.h"
+#include "BaseCardClass.h"
+#include <vector>
+#include <string>
 #include <iostream>
+
+using namespace std;
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    std::cout << "wat u saying blud !\n";
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
