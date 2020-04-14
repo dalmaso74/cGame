@@ -1,16 +1,21 @@
 #pragma once
+#include <vector>
 #include "Deck.h"
 class ComputerPlayer
 {
 public:
-	ComputerPlayer();
-	void selectCompHand(Deck& deck);
+
+	vector<BaseCardClass> compHand;
+
+	ComputerPlayer(Deck &deck);
+	vector <BaseCardClass> selectCompHand(Deck& deck);
+	void drawForComputer(vector<BaseCardClass> cards);
 	void computerMoves();
+	void drawFromDeck(Deck& deck);
+	vector <BaseCardClass> getCompHand();
 	void cardAffect(BaseCardClass card);
 	void addToHand(BaseCardClass card);
 	int getComputerPoints();
-	vector<BaseCardClass> getCompHand();
-	void showHand();
 	~ComputerPlayer();
 private:
 	int computerPoints;

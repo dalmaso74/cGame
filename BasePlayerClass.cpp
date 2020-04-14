@@ -35,9 +35,9 @@ vector<BaseCardClass>BasePlayerClass::getPlayerHand()
 	return playersHand;
 } 
 
-void BasePlayerClass::displayHand()
+int BasePlayerClass::getPlayerPoints()
 {
-	 getVector(playersHand);
+	 return playerPoints;
 }
 
 

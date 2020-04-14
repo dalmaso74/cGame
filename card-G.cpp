@@ -16,31 +16,31 @@ int main()
 	Deck deck = Deck();
 	int userInputs;
 	BasePlayerClass player = BasePlayerClass();
-	ComputerPlayer comPlayer = ComputerPlayer();
+	ComputerPlayer comPlayer = ComputerPlayer(deck);
 	designClass printClass = designClass();
 
-	printClass.printWelcome();
-	printClass.printCardInfo();
+	//printClass.printWelcome();
+	//printClass.printCardInfo();
+	
 
-	cout << "Please choose 5 card of your liking  " << endl;
-	while (player.getPlayerHand().size() < 5 && comPlayer.getCompHand().size() < 5)
+	
+	while (player.getPlayerHand().size() < 5)
 	{
 		if (player.getPlayerHand().size() > 0){
-			cout << " Select Cards for your hand \n";
+			cout << " Select Cards for your hand " << endl;
 		}
 		else{
-			cout << " Select your cards";
+			cout << " Select your cards"<<endl;
 		}
 
 		cin >> userInputs;
 		int amountOfCard;
-		cout << "enter the amount of card you would like ";
+		cout << "enter the amount of card you would like " << endl;
 
 
 		cin >> amountOfCard;
-		if (amountOfCard > 5 || player.getPlayerHand().size() &&
-			comPlayer.getCompHand().size() + amountOfCard> 5){
-			cout << "get more cards \n";
+		if (amountOfCard > 5 || player.getPlayerHand().size() + amountOfCard> 5){
+			cout << "Too many cards Please try again\n"<<endl;
 			continue;
 		}
 		
@@ -58,9 +58,28 @@ int main()
 			break;
 		}
 	}
-
 	for (BaseCardClass c : player.getPlayerHand()){
 		cout << c.getCardType();
+	}
+
+	for (BaseCardClass computerCards : comPlayer.getCompHand()) {
+		cout << computerCards.getCardType();
+	}
+
+	int cardToPlay = 0;
+	cin >> cardToPlay;
+
+	while (!comPlayer.getCompHand().empty() && player.getPlayerHand().empty())
+	{
+		for (BaseCardClass computerCards : comPlayer.getCompHand()) {
+			cout << "Comp Cards" << computerCards.getCardType()<<endl;
+		} 
+		cout << "Your Oppenets points" << comPlayer.getComputerPoints() << endl;
+		cout << "Your points " << player.getPlayerPoints()<<endl; 
+		if (player.getPlayerHand)
+		{
+
+		}
 	}
 }
 

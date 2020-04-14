@@ -3,20 +3,53 @@
 #include <iostream>
 using namespace std;
 
-ComputerPlayer::ComputerPlayer()
+
+ComputerPlayer::ComputerPlayer(Deck &deck)
 {
+	drawFromDeck(deck);
+	
 }
 
-void ComputerPlayer::selectCompHand(Deck& deck)
+
+vector <BaseCardClass> ComputerPlayer::selectCompHand(Deck &deck)
 {
 	//BaseCardClass selectTheCard;
+	int selected = 0;
+	//while (compHand.size()< 5)
+	//{
+	vector <BaseCardClass> retrival = vector <BaseCardClass>();
+	vector <BaseCardClass> plusCard = deck.getPlusCard(2);
+	vector <BaseCardClass> minusCard = deck.getMinusCard(2);
+	vector <BaseCardClass> stealCard = deck.getstealCard(1);
+	
+	retrival.insert(retrival.begin(), plusCard.begin(),	 plusCard.end());
+	retrival.insert(retrival.begin(), minusCard.begin(), minusCard.end());
+	retrival.insert(retrival.begin(), stealCard.begin(), stealCard.end());
+		
+	return retrival;
+}
 
+void ComputerPlayer::drawForComputer(vector<BaseCardClass> cards){
+
+	compHand.insert(compHand.end(), cards.begin(), cards.end());
+}
+
+void ComputerPlayer::drawFromDeck(Deck& deck){
+	
+	vector <BaseCardClass>  selectedCards = selectCompHand(deck);
+	drawForComputer(selectedCards);
 }
 
 void ComputerPlayer::computerMoves()
 {
-	//
+	for (size_t i = 0; i < length; i++)
+	{
+
+	}
+	
 }
+
+
 
 void ComputerPlayer::cardAffect(BaseCardClass card)
 {
@@ -27,7 +60,7 @@ void ComputerPlayer::cardAffect(BaseCardClass card)
 	}
 	else
 	{
-		tempPoints = card.plusCardAction(this->computerPoints);
+		tempPoints = card.plusCardAction(this->getComputerPoints());
 		cout << " else statement in the computer class might be wrong";
 	}
 	if (tempPoints == NULL)
@@ -50,15 +83,14 @@ int ComputerPlayer::getComputerPoints()
 	return computerPoints;
 }
 
+
+
 vector<BaseCardClass> ComputerPlayer::getCompHand()
 {
-	return vector<BaseCardClass>();
+	return compHand;
 }
 
-void ComputerPlayer::showHand()
-{
 
-}
 
 ComputerPlayer::~ComputerPlayer()
 {

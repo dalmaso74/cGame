@@ -123,7 +123,9 @@ vector <BaseCardClass> Deck::getstealCard(int amount)
 		if (deckofCards.at(i).getCardType() == "Steal"){	
 			retrival.push_back(deckofCards.at(i));
 		}
+		
 	}
+	
 	return retrival;
 }
 
