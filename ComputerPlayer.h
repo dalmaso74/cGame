@@ -1,4 +1,5 @@
 #pragma once
+#include "pch.h"
 #include <vector>
 #include "Deck.h"
 class ComputerPlayer
@@ -14,10 +15,12 @@ public:
 	void drawFromDeck(Deck& deck);
 	vector <BaseCardClass> getCompHand();
 	void cardAffect(BaseCardClass card);
-	void addToHand(BaseCardClass card);
+	void playCard(int card);
+	bool getSelectedCard(BaseCardClass &card);
+	void setComputerPoints(int CompPoint);
 	int getComputerPoints();
 	~ComputerPlayer();
+	int computerPoints ;
 private:
-	int computerPoints;
 };
 

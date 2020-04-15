@@ -7,6 +7,10 @@
 using namespace std;
 
 
+BaseCardClass::BaseCardClass()
+{
+}
+
 BaseCardClass::BaseCardClass(string name)
 {
 	cardType = name;
@@ -14,7 +18,11 @@ BaseCardClass::BaseCardClass(string name)
 
 int BaseCardClass::plusCardAction(int playerPoints)
 {
-	return playerPoints + cardValue;
+	
+	cout << cardValue<<endl;
+	cout << playerPoints+ cardValue << endl;
+	return (playerPoints + cardValue);
+
 	//playersPoints = playersPoints + cardValue;
 }
 
@@ -43,6 +51,8 @@ void BaseCardClass::setCardpoint(int newCardValue)
 {
 	cardValue = newCardValue;
 }
+
+
 
 int BaseCardClass::getCardPoints()
 {

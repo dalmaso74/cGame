@@ -6,7 +6,7 @@ using namespace std;
 class BaseCardClass
 {
 public:
-
+	BaseCardClass();
 	BaseCardClass(string card);
 	int plusCardAction(int playerPoints);
 	int minusCardAction(int playerPoints);
@@ -19,6 +19,6 @@ public:
 
 private:
 	string cardType;
-	int cardValue;
+	int cardValue = 3;
 };
 

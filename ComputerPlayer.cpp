@@ -1,4 +1,5 @@
 #include "pch.h"
+
 #include "ComputerPlayer.h"
 #include <iostream>
 using namespace std;
@@ -40,25 +41,37 @@ void ComputerPlayer::drawFromDeck(Deck& deck){
 	drawForComputer(selectedCards);
 }
 
+
 void ComputerPlayer::computerMoves()
 {
-	for (size_t i = 0; i < length; i++)
-	{
-
-	}
+	
+			
+	
 	
 }
 
 
+bool ComputerPlayer::getSelectedCard(BaseCardClass &card)
+{
+	int cardToPlay;
+
+	if (0 != compHand.size()) {
+		cardToPlay = rand() % compHand.size();
+	card = compHand.at(cardToPlay);
+	return true;
+
+	}
+	return false;
+}
 
 void ComputerPlayer::cardAffect(BaseCardClass card)
 {
 	int tempPoints;
-	if (card.getCardType() == "minus")
+	if (card.getCardType() == "Minus")
 	{
 		tempPoints = card.minusCardAction(this->getComputerPoints());
 	}
-	else
+	else if (card.getCardType()== "Plus")
 	{
 		tempPoints = card.plusCardAction(this->getComputerPoints());
 		cout << " else statement in the computer class might be wrong";
@@ -74,13 +87,25 @@ void ComputerPlayer::cardAffect(BaseCardClass card)
 	}
 }
 
-void ComputerPlayer::addToHand(BaseCardClass card)
+void ComputerPlayer::playCard(int card){
+
+	cout<< "Computer played   "<<getCompHand().at(card).getCardType();
+	compHand.erase(compHand.begin() + (card ));
+
+}
+
+
+void ComputerPlayer::setComputerPoints(int CompPoints)
 {
+	computerPoints += CompPoints;
+	cout <<"setcompPLayer" <<computerPoints;
 }
 
 int ComputerPlayer::getComputerPoints()
 {
+	cout <<"GetCOMPUTER"<< computerPoints<<endl;
 	return computerPoints;
+	
 }
 
 

@@ -153,6 +153,7 @@
   <ItemGroup>
     <ClCompile Include="BaseCardClass.cpp" />
     <ClCompile Include="BasePlayerClass.cpp" />
+    <ClCompile Include="BoardClass.cpp" />
     <ClCompile Include="card-G.cpp" />
     <ClCompile Include="ComputerPlayer.cpp" />
     <ClCompile Include="Deck.cpp" />
@@ -162,6 +163,7 @@
   <ItemGroup>
     <ClInclude Include="BaseCardClass.h" />
     <ClInclude Include="BasePlayerClass.h" />
+    <ClInclude Include="BoardClass.h" />
     <ClInclude Include="ComputerPlayer.h" />
     <ClInclude Include="Deck.h" />
     <ClInclude Include="designClass.h" />

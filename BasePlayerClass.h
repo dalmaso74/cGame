@@ -11,13 +11,15 @@ public:
 	void getVector(vector<BaseCardClass> card);
 	void drawFromDeck(vector<BaseCardClass> cards);
 	vector<BaseCardClass> getPlayerHand();
-	//void setPlayerPoints(int points);
+	void playerSelectCard (int card);
+	void setPlayerPoints(int points);
 	int getPlayerPoints();
-
+	void displayPlayerPoints();
+	void displayHand();
 
 	~BasePlayerClass();
 private:
-	int playerPoints = 0;
+	int playerPoints = 10;
 	vector<BaseCardClass> playersHand;
 };
 

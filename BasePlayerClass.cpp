@@ -33,11 +33,37 @@ void BasePlayerClass::drawFromDeck(vector<BaseCardClass> cards)
 vector<BaseCardClass>BasePlayerClass::getPlayerHand()
 {
 	return playersHand;
-} 
+}
+void BasePlayerClass::playerSelectCard(int amount) {
+	if (amount < getPlayerHand().size()) {
+	cout << "choosen card    " << getPlayerHand().at(amount).getCardType() << endl;
+	playersHand.erase(playersHand.begin() + (amount));
+	}
+}
+
+void BasePlayerClass::setPlayerPoints(int points)
+{
+	playerPoints = points;
+}
+
 
 int BasePlayerClass::getPlayerPoints()
 {
 	 return playerPoints;
+}
+
+void BasePlayerClass::displayPlayerPoints()
+{
+	cout << getPlayerPoints() <<"   : Your Current Score Points"<<endl;
+}
+
+void BasePlayerClass::displayHand()
+{
+	cout << "these are your card\n";
+	for (BaseCardClass c : getPlayerHand()) {
+		cout <<  c.getCardType();
+	}
+	cout << "/n";
 }
 
 
