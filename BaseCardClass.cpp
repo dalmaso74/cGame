@@ -19,9 +19,8 @@ BaseCardClass::BaseCardClass(string name)
 int BaseCardClass::plusCardAction(int playerPoints)
 {
 	
-	cout << cardValue<<endl;
-	cout << playerPoints+ cardValue << endl;
-	return (playerPoints + cardValue);
+	
+	return playerPoints + cardValue;
 
 	//playersPoints = playersPoints + cardValue;
 }

@@ -34,16 +34,18 @@ vector<BaseCardClass>BasePlayerClass::getPlayerHand()
 {
 	return playersHand;
 }
-void BasePlayerClass::playerSelectCard(int amount) {
-	if (amount < getPlayerHand().size()) {
-	cout << "choosen card    " << getPlayerHand().at(amount).getCardType() << endl;
-	playersHand.erase(playersHand.begin() + (amount));
+bool BasePlayerClass::playerSelectCard(int amount) {
+	if (amount <= getPlayerHand().size()) {
+	cout << "choosen card    " << getPlayerHand().at(amount-1).getCardType() << endl;
+	//playersHand.erase(playersHand.begin() + (amount-1));
+	return true;
 	}
+	return false;
 }
 
 void BasePlayerClass::setPlayerPoints(int points)
 {
-	playerPoints = points;
+	this->playerPoints = points;
 }
 
 
@@ -54,7 +56,7 @@ int BasePlayerClass::getPlayerPoints()
 
 void BasePlayerClass::displayPlayerPoints()
 {
-	cout << getPlayerPoints() <<"   : Your Current Score Points"<<endl;
+	cout <<"Your Current Score Points  "<< getPlayerPoints()<<endl;
 }
 
 void BasePlayerClass::displayHand()
@@ -63,7 +65,17 @@ void BasePlayerClass::displayHand()
 	for (BaseCardClass c : getPlayerHand()) {
 		cout <<  c.getCardType();
 	}
-	cout << "/n";
+	cout << "\n";
+}
+
+void BasePlayerClass::removeCard(int amount)
+{
+	playersHand.erase(playersHand.begin() + (amount-1));
+
+}
+
+void BasePlayerClass::addToHand(BaseCardClass card){
+	playersHand.push_back(card);
 }
 
 

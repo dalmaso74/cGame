@@ -51,13 +51,17 @@ void ComputerPlayer::computerMoves()
 }
 
 
-bool ComputerPlayer::getSelectedCard(BaseCardClass &card)
+bool ComputerPlayer::getSelectedCard(BaseCardClass &card,int &cardIndex)
 {
 	int cardToPlay;
 
 	if (0 != compHand.size()) {
-		cardToPlay = rand() % compHand.size();
+	cardToPlay = rand() % compHand.size()+1;
+	cardToPlay--;
+	cout << cardToPlay;
+	displayCompHand();
 	card = compHand.at(cardToPlay);
+	cardIndex = cardToPlay;
 	return true;
 
 	}
@@ -97,13 +101,28 @@ void ComputerPlayer::playCard(int card){
 
 void ComputerPlayer::setComputerPoints(int CompPoints)
 {
-	computerPoints += CompPoints;
-	cout <<"setcompPLayer" <<computerPoints;
+	this->computerPoints = CompPoints;
+}
+
+void ComputerPlayer::addToComp(BaseCardClass card)
+{
+	compHand.push_back(card);
+}
+
+void ComputerPlayer::displayCompHand()
+{
+	for (size_t i = 0; i < compHand.size(); i++)
+	{
+		cout << "\nComputers hand" << compHand.at(i).getCardType()<< i << endl;
+	}
+	//for (BaseCardClass card: getCompHand())
+	//{
+	//	cout<<"\nComputers hand"<<card.getCardType()<<endl;
+	//}
 }
 
 int ComputerPlayer::getComputerPoints()
 {
-	cout <<"GetCOMPUTER"<< computerPoints<<endl;
 	return computerPoints;
 	
 }

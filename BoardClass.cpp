@@ -1,7 +1,7 @@
 #include <iostream>
 #include "BoardClass.h"
 
-int BoardClass::cardEffectOnByCompPlayer(BaseCardClass card, BasePlayerClass player,ComputerPlayer compPlayer)
+int BoardClass::cardEffectOnByCompPlayer(BaseCardClass card, BasePlayerClass &player,ComputerPlayer &compPlayer)
 {	
 	int tempPoints;
 	if (card.getCardType() == "Minus")
@@ -11,29 +11,47 @@ int BoardClass::cardEffectOnByCompPlayer(BaseCardClass card, BasePlayerClass pla
 	}
 	else if (card.getCardType() == "Plus")
 	{
-		compPlayer.computerPoints = card.plusCardAction(compPlayer.getComputerPoints());
+		tempPoints = card.plusCardAction(compPlayer.getComputerPoints());
 		//cout << tempPoints << endl;
-		//compPlayer.setComputerPoints(tempPoints);
-		cout << " else statement in the computer class might be wrong";
+		compPlayer.setComputerPoints(tempPoints);
 	}
+	else if (card.getCardType() == "Steal")
+	{
+		int CardtoSteal;
+		CardtoSteal = rand()% player.getPlayerHand().size()+1;
+		
+		compPlayer.addToComp(player.getPlayerHand().at(CardtoSteal-1));
+		player.removeCard(CardtoSteal);
+	}
+	cout <<"\n\n"<<"Computer Played "<<card.getCardType() << endl;
 	return 0;
 	
 }
-int BoardClass::cardEffectOnByPlayer(BaseCardClass card, BasePlayerClass player,ComputerPlayer COmpplayer)
+int BoardClass::cardEffectOnByPlayer(BaseCardClass card, BasePlayerClass &player,ComputerPlayer &compPlayer)
 {
-	//int tempPoints;
-	//if (card.getCardType() == "Minus")
-	//{
-	//	tempPoints = card.minusCardAction(player.getComputerPoints());
-	//	player.setComputerPoints(tempPoints);
-	//}
-	//else if (card.getCardType() == "Plus")
-	//{
-	//	tempPoints = card.plusCardAction(player.getComputerPoints());
-	//	cout << " else statement in the computer class might be wrong";
-	//	player.setComputerPoints(tempPoints);
-	//}
-	//
+	int tempPoints;
+	if (card.getCardType() == "Plus")
+	{
+		tempPoints = card.plusCardAction(player.getPlayerPoints());
+		player.setPlayerPoints(tempPoints);
+	}
+	else if (card.getCardType() == "Minus")
+	{
+		tempPoints = card.minusCardAction(compPlayer.getComputerPoints());
+		//cout << tempPoints << endl;
+		compPlayer.setComputerPoints(tempPoints);
+
+	}
+	else if (card.getCardType() == "Steal")
+	{
+		int CardtoSteal;
+		compPlayer.displayCompHand();
+		cout << "Card to steal";
+		cin >> CardtoSteal;
+		player.addToHand(compPlayer.getCompHand().at(CardtoSteal -1));
+		compPlayer.compHand.erase(compPlayer.compHand.begin()+ (CardtoSteal -1));
+	}
+	
 	return 0;
 }
 

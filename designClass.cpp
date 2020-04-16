@@ -28,7 +28,7 @@ void designClass::printCardInfo()
 
 void designClass::printEndround()
 {
-	cout << "---------------------------------End of this round---------------------------\n"<<endl;
+	cout << "---------------------------------New round---------------------------\n"<<endl;
 }
 
 void designClass::printEndGame()

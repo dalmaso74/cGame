@@ -16,11 +16,14 @@ public:
 	vector <BaseCardClass> getCompHand();
 	void cardAffect(BaseCardClass card);
 	void playCard(int card);
-	bool getSelectedCard(BaseCardClass &card);
+	bool getSelectedCard(BaseCardClass &card,int &cardIndex);
 	void setComputerPoints(int CompPoint);
+	void addToComp(BaseCardClass card);
+	void displayCompHand();
+
 	int getComputerPoints();
 	~ComputerPlayer();
-	int computerPoints ;
+	int computerPoints = 10;
 private:
 };
 

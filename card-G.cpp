@@ -33,11 +33,12 @@ int main()
 	
 	while (player.getPlayerHand().size() < 6) {
 
+		//player.displayHand();
 		if (player.getPlayerHand().size() > 0) {
-			cout << " Select Cards for your hand " << endl;
+			cout << "Select more cards for your hand " << endl;
 		}
 		else {
-			cout << " Select your cards" << endl;
+			cout << "You need to select 5 card overall" << endl;
 		}
 
 		cin >> userInputs;
@@ -48,7 +49,7 @@ int main()
 		cin >> amountOfCard;
 		if (amountOfCard > 5 || player.getPlayerHand().size() + amountOfCard > 5) {
 			cout << "Too many cards Please try again\n" << endl;
-			continue;
+			break;
 		}
 
 		switch (userInputs) {
@@ -68,43 +69,60 @@ int main()
 		for (BaseCardClass c : player.getPlayerHand()) {
 			cout << c.getCardType();
 		}
-		player.displayHand();
+		cout << ":have been added to your hand" << endl;
 
-		/*for (BaseCardClass computerCards : comPlayer.getCompHand()) {
-			cout << "Comp Cards" << computerCards.getCardType() << endl;
-		}
-		cout << "Your Oppenets points" << comPlayer.getComputerPoints() << endl;
-		cout << "Your points " << player.getPlayerPoints() << endl;*/
-
-		while (true)
-		{
-			cout << "\n" << endl << "what card do you wanna play" << endl;
-
-			BaseCardClass card = BaseCardClass();
-			player.displayPlayerPoints();
-			if (comPlayer.getSelectedCard(card))
-			{
-				cout <<"CompPoints" <<comPlayer.getComputerPoints()<<endl;
-				board.cardEffectOnByCompPlayer(card, player, comPlayer);
-				cout << "CompPoints" <<comPlayer.getComputerPoints() << endl;
-
-			}
-			else
-			{
-				cout << "empty"<<endl;
-			}
-			
-			cout << "\n" << endl << "what card do you wanna play" << endl;
-			
-			cin >> cardToPlay;
-			
-			player.playerSelectCard(cardToPlay);
-			player.displayHand();
-
-
-		}
+		cout << player.getPlayerHand().size();
 	}
-	
+		
+	if (player.getPlayerHand().size() >= 5) {
+
+			while (player.getPlayerHand().size() > 0 || comPlayer.getCompHand().size()>0)
+			{
+				printClass.printEndround();
+				player.displayPlayerPoints();
+				cout << "Computer Player Points  " << comPlayer.getComputerPoints();
+				
+				BaseCardClass card = BaseCardClass();
+				int cardIndex;
+				if (comPlayer.getSelectedCard(card,cardIndex))
+				{
+					board.cardEffectOnByCompPlayer(card, player, comPlayer);
+					cout << "\nCurrent Computer Points"<< comPlayer.getComputerPoints()<< endl;
+					cout <<"cardIndex" <<cardIndex;
+					if (cardIndex != 0 )
+					{
+					comPlayer.compHand.erase(comPlayer.compHand.begin() + cardIndex);
+
+					}
+					else
+					{
+						comPlayer.compHand.erase(comPlayer.compHand.begin());
+					}
+				}
+				else
+				{
+					cout << "empty" << endl;
+				}
+				if (player.getPlayerHand().size() > 0)
+				{
+					player.displayHand();
+					cout << "\n" << endl << "what card do you wanna play" << endl;
+
+					cin >> cardToPlay;
+					//comPlayer.displayCompHand();
+					if (player.playerSelectCard(cardToPlay)) {
+						board.cardEffectOnByPlayer(player.getPlayerHand().at(cardToPlay - 1), player, comPlayer);
+						player.removeCard(cardToPlay);
+					}
+
+				}
+				else
+				{
+					cout << "empty hand";
+				}
+
+			}
+		}
 
 	
 }
