@@ -19,13 +19,13 @@ vector <BaseCardClass> ComputerPlayer::selectCompHand(Deck &deck)
 	//while (compHand.size()< 5)
 	//{
 	vector <BaseCardClass> retrival = vector <BaseCardClass>();
+	vector <BaseCardClass> stealCard = deck.getstealCard(1);
 	vector <BaseCardClass> plusCard = deck.getPlusCard(2);
 	vector <BaseCardClass> minusCard = deck.getMinusCard(2);
-	vector <BaseCardClass> stealCard = deck.getstealCard(1);
 	
 	retrival.insert(retrival.begin(), plusCard.begin(),	 plusCard.end());
-	retrival.insert(retrival.begin(), minusCard.begin(), minusCard.end());
 	retrival.insert(retrival.begin(), stealCard.begin(), stealCard.end());
+	retrival.insert(retrival.begin(), minusCard.begin(), minusCard.end());
 		
 	return retrival;
 }
@@ -41,14 +41,6 @@ void ComputerPlayer::drawFromDeck(Deck& deck){
 	drawForComputer(selectedCards);
 }
 
-
-void ComputerPlayer::computerMoves()
-{
-	
-			
-	
-	
-}
 
 
 bool ComputerPlayer::getSelectedCard(BaseCardClass &card,int &cardIndex)

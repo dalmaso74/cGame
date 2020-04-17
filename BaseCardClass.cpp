@@ -51,6 +51,12 @@ void BaseCardClass::setCardpoint(int newCardValue)
 	cardValue = newCardValue;
 }
 
+int BaseCardClass::addPoints(int playerPoints)
+{
+	return playerPoints + 1;
+
+}
+
 
 
 int BaseCardClass::getCardPoints()

@@ -2,6 +2,21 @@
 #include <iostream>
 using namespace std;
 
+
+void designClass::diplayWinner(BasePlayerClass player, ComputerPlayer compPlay){
+	if (player.getPlayerPoints() > compPlay.getComputerPoints())
+	{
+		cout << "Player wins";
+	}
+	if (player.getPlayerPoints() < compPlay.getComputerPoints()) {
+		cout << "Computer Player wins" << endl;
+	}
+	else
+	{
+		cout << "We have a Draw"<<endl;
+	}
+}
+
 void designClass::printWelcome()
 {
 	cout << "-------------------------------WELCOME To The Game ------------------------------\n"

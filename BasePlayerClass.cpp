@@ -74,6 +74,8 @@ void BasePlayerClass::removeCard(int amount)
 
 }
 
+
+
 void BasePlayerClass::addToHand(BaseCardClass card){
 	playersHand.push_back(card);
 }

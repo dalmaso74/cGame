@@ -45,11 +45,22 @@ int BoardClass::cardEffectOnByPlayer(BaseCardClass card, BasePlayerClass &player
 	else if (card.getCardType() == "Steal")
 	{
 		int CardtoSteal;
-		compPlayer.displayCompHand();
-		cout << "Card to steal";
-		cin >> CardtoSteal;
-		player.addToHand(compPlayer.getCompHand().at(CardtoSteal -1));
-		compPlayer.compHand.erase(compPlayer.compHand.begin()+ (CardtoSteal -1));
+		if (compPlayer.getCompHand().size()==0)
+		{
+			cout << "computer hand is empty thus you get +1 points\n";
+			tempPoints=card.addPoints(player.getPlayerPoints());
+			
+			player.setPlayerPoints(tempPoints);
+		}
+		else
+		{
+			compPlayer.displayCompHand();
+			cout << "Card to steal";
+			cin >> CardtoSteal;
+			player.addToHand(compPlayer.getCompHand().at(CardtoSteal -1));
+			compPlayer.compHand.erase(compPlayer.compHand.begin()+ (CardtoSteal -1));
+		}
+		
 	}
 	
 	return 0;

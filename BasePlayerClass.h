@@ -17,6 +17,7 @@ public:
 	void displayPlayerPoints();
 	void displayHand();
 	void removeCard(int amount);
+	void addPoints(int points);
 	void addToHand(BaseCardClass card);
 	~BasePlayerClass();
 private:

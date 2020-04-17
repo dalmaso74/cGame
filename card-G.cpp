@@ -5,6 +5,7 @@
 #include "BoardClass.h"
 #include "ComputerPlayer.h"
 #include "Deck.h"
+#include <fstream>
 #include "BaseCardClass.h"
 #include "designClass.h"
 #include <vector>
@@ -29,9 +30,16 @@ int main()
 	//printClass.printWelcome();
 	//printClass.printCardInfo();
 	
+	ofstream outputFile;
+	outputFile.open("GameFile.txt");
 
+
+	if (outputFile.fail())
+	{
+		cerr << "Error with opening file" << endl;
+	}
 	
-	while (player.getPlayerHand().size() < 6) {
+	while (player.getPlayerHand().size() < 5) {
 
 		//player.displayHand();
 		if (player.getPlayerHand().size() > 0) {
@@ -118,10 +126,12 @@ int main()
 				}
 				else
 				{
-					cout << "empty hand";
+					//cout << "Your hand is empty" << endl;
 				}
 
 			}
+			printClass.diplayWinner(player,comPlayer);
+			printClass.printEndGame();
 		}
 
 	

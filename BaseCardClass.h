@@ -12,7 +12,7 @@ public:
 	int minusCardAction(int playerPoints);
 	void stealCardAction();
 	void setCardpoint(int newCardValue);
-	void setCardPoint(int newCardValue);
+	int addPoints(int newCardValue);
 	int getCardPoints();
 	string getCardType();
 	~BaseCardClass();
