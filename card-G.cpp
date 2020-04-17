@@ -31,22 +31,25 @@ int main()
 	//printClass.printCardInfo();
 	
 	ofstream outputFile;
+
+	//if (outputFile.fail())
+	//{
+	//
 	outputFile.open("GameFile.txt");
-
-
-	if (outputFile.fail())
-	{
-		cerr << "Error with opening file" << endl;
-	}
+	//cerr << "Error with opening file" << endl;
+	outputFile << "Game report file" << endl;
+//	}
 	
 	while (player.getPlayerHand().size() < 5) {
 
 		//player.displayHand();
 		if (player.getPlayerHand().size() > 0) {
 			cout << "Select more cards for your hand " << endl;
+			outputFile << "Select more cards for your hand" << endl;
 		}
 		else {
 			cout << "You need to select 5 card overall" << endl;
+			outputFile << "You need to select 5 card overall" << endl;
 		}
 
 		cin >> userInputs;
@@ -55,9 +58,9 @@ int main()
 
 
 		cin >> amountOfCard;
-		if (amountOfCard > 5 || player.getPlayerHand().size() + amountOfCard > 5) {
-			cout << "Too many cards Please try again\n" << endl;
-			break;
+		if (amountOfCard > 5 || player.getPlayerHand().size() + amountOfCard > 5|| userInputs >=4) {
+			cout << "Wrong value Please try again\n" << endl;
+			continue;
 		}
 
 		switch (userInputs) {
@@ -74,22 +77,29 @@ int main()
 			break;
 		}
 
-		for (BaseCardClass c : player.getPlayerHand()) {
-			cout << c.getCardType();
-		}
-		cout << ":have been added to your hand" << endl;
-
-		cout << player.getPlayerHand().size();
+		
+				for (BaseCardClass c : player.getPlayerHand()) {
+					cout << c.getCardType();
+					outputFile << c.getCardType();
+				}
+		
+				outputFile << "   these are you choosen card";
+				cout << ":have been added to your hand" << endl;
+//		cout << player.getPlayerHand().size();
+		//outputFile.close();
 	}
 		
 	if (player.getPlayerHand().size() >= 5) {
 
+
 			while (player.getPlayerHand().size() > 0 || comPlayer.getCompHand().size()>0)
 			{
+				//ofstream outputFile;
 				printClass.printEndround();
 				player.displayPlayerPoints();
-				cout << "Computer Player Points  " << comPlayer.getComputerPoints();
-				
+				cout << "Computer Player Points  " << comPlayer.getComputerPoints() << endl;
+				outputFile << "Computer player Points    " << comPlayer.getComputerPoints() << endl;
+				outputFile << "Your Points   " << player.getPlayerPoints()<<endl;
 				BaseCardClass card = BaseCardClass();
 				int cardIndex;
 				if (comPlayer.getSelectedCard(card,cardIndex))
@@ -114,6 +124,7 @@ int main()
 				if (player.getPlayerHand().size() > 0)
 				{
 					player.displayHand();
+					outputFile << "\n" << "what card do you want to play";
 					cout << "\n" << endl << "what card do you wanna play" << endl;
 
 					cin >> cardToPlay;
@@ -132,6 +143,7 @@ int main()
 			}
 			printClass.diplayWinner(player,comPlayer);
 			printClass.printEndGame();
+			outputFile.close();
 		}
 
 	
