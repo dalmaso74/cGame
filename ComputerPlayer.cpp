@@ -126,6 +126,11 @@ vector<BaseCardClass> ComputerPlayer::getCompHand()
 	return compHand;
 }
 
+void ComputerPlayer::setCompPlayerHand(vector<BaseCardClass> card)
+{
+	this->compHand = card;
+}
+
 
 
 ComputerPlayer::~ComputerPlayer()

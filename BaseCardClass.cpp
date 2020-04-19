@@ -9,19 +9,18 @@ using namespace std;
 
 BaseCardClass::BaseCardClass()
 {
+	cardValue = rand() % 5 + 1;
 }
 
 BaseCardClass::BaseCardClass(string name)
 {
 	cardType = name;
+	cardValue = rand() % 5 + 1;
 }
 
 int BaseCardClass::plusCardAction(int playerPoints)
 {
-	
-	
 	return playerPoints + cardValue;
-
 	//playersPoints = playersPoints + cardValue;
 }
 
@@ -41,10 +40,6 @@ int BaseCardClass::minusCardAction(int playerPoints)
 	}
 }
 
-void BaseCardClass::stealCardAction()
-{
-	cout << "steal card not implmented";
-}
 
 void BaseCardClass::setCardpoint(int newCardValue)
 {
@@ -56,8 +51,6 @@ int BaseCardClass::addPoints(int playerPoints)
 	return playerPoints + 1;
 
 }
-
-
 
 int BaseCardClass::getCardPoints()
 {

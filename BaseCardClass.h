@@ -10,7 +10,7 @@ public:
 	BaseCardClass(string card);
 	int plusCardAction(int playerPoints);
 	int minusCardAction(int playerPoints);
-	void stealCardAction();
+	
 	void setCardpoint(int newCardValue);
 	int addPoints(int newCardValue);
 	int getCardPoints();

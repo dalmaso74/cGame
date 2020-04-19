@@ -154,20 +154,24 @@
     <ClCompile Include="BaseCardClass.cpp" />
     <ClCompile Include="BasePlayerClass.cpp" />
     <ClCompile Include="BoardClass.cpp" />
+    <ClCompile Include="BuilderClass.cpp" />
     <ClCompile Include="card-G.cpp" />
     <ClCompile Include="ComputerPlayer.cpp" />
     <ClCompile Include="Deck.cpp" />
     <ClCompile Include="designClass.cpp" />
     <ClCompile Include="pch.cpp" />
+    <ClCompile Include="DeckBuilder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseCardClass.h" />
     <ClInclude Include="BasePlayerClass.h" />
     <ClInclude Include="BoardClass.h" />
+    <ClInclude Include="BuilderClass.h" />
     <ClInclude Include="ComputerPlayer.h" />
     <ClInclude Include="Deck.h" />
     <ClInclude Include="designClass.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="DeckBuilder.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="GameFile.txt" />

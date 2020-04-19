@@ -11,6 +11,7 @@ public:
 	void getVector(vector<BaseCardClass> card);
 	void drawFromDeck(vector<BaseCardClass> cards);
 	vector<BaseCardClass> getPlayerHand();
+	void setPlayerHand(vector<BaseCardClass> card);
 	bool playerSelectCard (int card);
 	void setPlayerPoints(int points);
 	int getPlayerPoints();

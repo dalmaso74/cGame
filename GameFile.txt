@@ -1,10 +1,12 @@
 
 Computer Played  Minus
--------New round-----------PlusPlusPlusPlusPlus   these are you choosen cardComputer player Points10Your Points10
-what card do you want to playComputer player Points10Your Points10
-what card do you want to playComputer player Points13Your Points13
-what card do you want to playComputer player Points16Your Points16
-what card do you want to playComputer player Points16Your Points17Computer player Points19Your Points17layer Wins
----------------------------------Thank you for playing---------------------------
----------------------------Game results should be in the file--------------------
+-------New round---------------------------
 
+---------------------------------New round---------------------------
+
+sSwap   these are you choosen cardComputer player Points    10
+Your Points   10
+
+what card do you want to playyou played 1
+Computer player Points    10
+Your Points   6

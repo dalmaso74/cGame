@@ -41,6 +41,7 @@ int BoardClass::cardEffectOnByCompPlayer(BaseCardClass card, BasePlayerClass &pl
 			player.removeCard(CardtoSteal);
 		}
 	}
+
 	cout <<"\n\n"<<"Computer Played "<<card.getCardType() << endl;
 	outputFile << "\n" << "Computer Played  " << card.getCardType() << endl;
 	outputFile.close();
@@ -85,9 +86,35 @@ int BoardClass::cardEffectOnByPlayer(BaseCardClass card, BasePlayerClass &player
 		}
 		
 	}
+	else if (card.getCardType() == "Swap") {
+		player.displayHand();
+		swapImplemantation(player,compPlayer);
+		player.displayHand();
+	}
 	
 	return 0;
 	outputFile.close();
 }
+
+void BoardClass::swapImplemantation(BasePlayerClass &player, ComputerPlayer &comPlayer){
+
+	vector<BaseCardClass> swap = vector <BaseCardClass> ();
+	swap = player.getPlayerHand();
+	player.setPlayerHand(comPlayer.getCompHand());
+	comPlayer.setCompPlayerHand(swap);
+}
+
+
+void BoardClass::setBuilder(BuilderClass* builder)
+{
+	this->builder = builder;
+}
+
+void BoardClass::buildDeck(int plus, int minus, int steal){
+	this->builder->producePartA(plus);
+	this->builder->producePartB(minus);
+	this->builder->producePartC(steal);
+}
+
 
 

@@ -5,7 +5,7 @@
 
 Deck::Deck()
 {
-	genrateCards();
+	//genrateCards();
 	//deckofCards;
 }
 
@@ -26,7 +26,7 @@ void Deck::PlusCardGeneration(int cardValue)
 
 void Deck::stealCardGeneration()
 {
-	BaseCardClass card = BaseCardClass("Steal");
+	BaseCardClass card = BaseCardClass("Swap");
 	deckofCards.push_back(card);
 }
 
@@ -120,7 +120,7 @@ vector <BaseCardClass> Deck::getstealCard(int amount)
 		if (retrival.size() == amount){
 			return retrival;
 		}
-		if (deckofCards.at(i).getCardType() == "Steal"){	
+		if (deckofCards.at(i).getCardType() == "Swap"){	
 			retrival.push_back(deckofCards.at(i));
 		}
 		

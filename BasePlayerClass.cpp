@@ -34,6 +34,10 @@ vector<BaseCardClass>BasePlayerClass::getPlayerHand()
 {
 	return playersHand;
 }
+void BasePlayerClass::setPlayerHand(vector<BaseCardClass> card)
+{	
+	this->playersHand = card;
+}
 bool BasePlayerClass::playerSelectCard(int amount) {
 	if (amount <= getPlayerHand().size()) {
 	cout << "choosen card    " << getPlayerHand().at(amount-1).getCardType() << endl;

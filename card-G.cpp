@@ -5,6 +5,8 @@
 #include "BoardClass.h"
 #include "ComputerPlayer.h"
 #include "Deck.h"
+#include "BuilderClass.h"
+#include "DeckBuilder.h"
 #include <fstream>
 #include "BaseCardClass.h"
 #include "designClass.h"
@@ -18,7 +20,12 @@ using namespace std;
 int main()
 {
 	srand(time(NULL));
-	Deck deck = Deck();
+	DeckBuilder* deckBuilder = new DeckBuilder();
+	BoardClass boardClass = BoardClass();
+	boardClass.setBuilder(deckBuilder);
+	boardClass.buildDeck(8,8,4);
+	Deck deck = *deckBuilder->getDeck();
+	
 	int cardToPlay;
 	int userInputs;
 	int turnPLayed;
@@ -26,12 +33,10 @@ int main()
 	BasePlayerClass player = BasePlayerClass();
 	ComputerPlayer comPlayer = ComputerPlayer(deck);
 	designClass printClass = designClass();
+	ofstream outputFile;
 
 	//printClass.printWelcome();
 	//printClass.printCardInfo();
-	
-	ofstream outputFile;
-
 	//if (outputFile.fail())
 	//{
 	//
@@ -130,9 +135,21 @@ int main()
 					cin >> cardToPlay;
 					//comPlayer.displayCompHand();
 					if (player.playerSelectCard(cardToPlay)) {
-						board.cardEffectOnByPlayer(player.getPlayerHand().at(cardToPlay - 1), player, comPlayer);
-						player.removeCard(cardToPlay);
+						outputFile << "you played " << player.playerSelectCard(cardToPlay)<<endl;
+						if (player.getPlayerHand().at(cardToPlay-1).getCardType()=="Swap")
+						{
+							BaseCardClass swap = player.getPlayerHand().at(cardToPlay - 1);
+							player.removeCard(cardToPlay);
+							board.cardEffectOnByPlayer(swap, player, comPlayer);
+						}
+						else
+						{
+							board.cardEffectOnByPlayer(player.getPlayerHand().at(cardToPlay - 1), player, comPlayer);
+							player.removeCard(cardToPlay);
+							cout << "gerge is gat";
+						}
 					}
+
 
 				}
 				else

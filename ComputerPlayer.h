@@ -14,6 +14,7 @@ public:
 	void computerMoves();
 	void drawFromDeck(Deck& deck);
 	vector <BaseCardClass> getCompHand();
+	void setCompPlayerHand(vector<BaseCardClass> card);
 	void cardAffect(BaseCardClass card);
 	void playCard(int card);
 	bool getSelectedCard(BaseCardClass &card,int &cardIndex);
