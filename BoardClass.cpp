@@ -33,7 +33,7 @@ int BoardClass::cardEffectOnByCompPlayer(BaseCardClass card, BasePlayerClass &pl
 
 			compPlayer.setComputerPoints(tempPoints);
 		}
-		else
+		else 
 		{
 			CardtoSteal = rand() % player.getPlayerHand().size() + 1;
 
@@ -41,10 +41,12 @@ int BoardClass::cardEffectOnByCompPlayer(BaseCardClass card, BasePlayerClass &pl
 			player.removeCard(CardtoSteal);
 		}
 	}
+	else if (card.getCardType() == "Swap") {
+		swapImplemantation(player, compPlayer);
+	}
 
 	cout <<"\n\n"<<"Computer Played "<<card.getCardType() << endl;
 	outputFile << "\n" << "Computer Played  " << card.getCardType() << endl;
-	outputFile.close();
 
 	return 0;
 	
@@ -87,13 +89,12 @@ int BoardClass::cardEffectOnByPlayer(BaseCardClass card, BasePlayerClass &player
 		
 	}
 	else if (card.getCardType() == "Swap") {
-		player.displayHand();
 		swapImplemantation(player,compPlayer);
-		player.displayHand();
 	}
+	cout <<"\n\n"<<"You Played "<<card.getCardType() << endl;
+	outputFile << "\n" << "Player Played  " << card.getCardType() << endl;
 	
 	return 0;
-	outputFile.close();
 }
 
 void BoardClass::swapImplemantation(BasePlayerClass &player, ComputerPlayer &comPlayer){
@@ -110,10 +111,12 @@ void BoardClass::setBuilder(BuilderClass* builder)
 	this->builder = builder;
 }
 
-void BoardClass::buildDeck(int plus, int minus, int steal){
+void BoardClass::buildDeck(int plus, int minus, int swap,int steal){
 	this->builder->producePartA(plus);
 	this->builder->producePartB(minus);
-	this->builder->producePartC(steal);
+	this->builder->producePartC(swap);
+	this->builder->producePartD(steal);
+
 }
 
 

@@ -120,7 +120,7 @@ vector <BaseCardClass> Deck::getstealCard(int amount)
 		if (retrival.size() == amount){
 			return retrival;
 		}
-		if (deckofCards.at(i).getCardType() == "Swap"){	
+		if (deckofCards.at(i).getCardType() == "Steal"){	
 			retrival.push_back(deckofCards.at(i));
 		}
 		
@@ -128,7 +128,22 @@ vector <BaseCardClass> Deck::getstealCard(int amount)
 	
 	return retrival;
 }
+vector <BaseCardClass> Deck::getSwapCard(int amount)
+{
+	vector<BaseCardClass> retrival = vector <BaseCardClass>();
+	for (size_t i = 0; i < deckofCards.size(); i++)
+	{
+		if (retrival.size() == amount) {
+			return retrival;
+		}
+		if (deckofCards.at(i).getCardType() == "Swap") {
+			retrival.push_back(deckofCards.at(i));
+		}
 
+	}
+	cout << "swap card selected";
+	return retrival;
+}
 void Deck::displayDeck()
 {
 	cout << "diplay deck unfished";

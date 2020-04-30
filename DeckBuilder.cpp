@@ -23,13 +23,21 @@ void DeckBuilder::producePartB(int amount) const{
 	}
 }
 
-void DeckBuilder::producePartC(int amount) const{
+
+void DeckBuilder::producePartC(int amount) const
+{
+	for (size_t i = 0; i < amount; i++)
+	{
+		product->deckofCards.push_back(BaseCardClass("Steal"));
+	}
+}
+
+void DeckBuilder::producePartD(int amount) const{
 	for (size_t i = 0; i < amount; i++)
 	{
 		product->deckofCards.push_back(BaseCardClass("Swap"));
 	}
 }
-
 Deck* DeckBuilder::getDeck()
 {
 	Deck* retval = this->product;

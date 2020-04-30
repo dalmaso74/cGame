@@ -1,5 +1,5 @@
 #include "pch.h"
-
+#include <fstream>
 #include "ComputerPlayer.h"
 #include <iostream>
 using namespace std;
@@ -8,6 +8,7 @@ using namespace std;
 ComputerPlayer::ComputerPlayer(Deck &deck)
 {
 	drawFromDeck(deck);
+	
 	
 }
 
@@ -22,10 +23,12 @@ vector <BaseCardClass> ComputerPlayer::selectCompHand(Deck &deck)
 	vector <BaseCardClass> stealCard = deck.getstealCard(1);
 	vector <BaseCardClass> plusCard = deck.getPlusCard(2);
 	vector <BaseCardClass> minusCard = deck.getMinusCard(2);
+	vector <BaseCardClass> swapCard = deck.getSwapCard(0);
 	
 	retrival.insert(retrival.begin(), plusCard.begin(),	 plusCard.end());
 	retrival.insert(retrival.begin(), stealCard.begin(), stealCard.end());
 	retrival.insert(retrival.begin(), minusCard.begin(), minusCard.end());
+	retrival.insert(retrival.begin(), swapCard.begin(), swapCard.end());
 		
 	return retrival;
 }
@@ -50,8 +53,8 @@ bool ComputerPlayer::getSelectedCard(BaseCardClass &card,int &cardIndex)
 	if (0 != compHand.size()) {
 	cardToPlay = rand() % compHand.size()+1;
 	cardToPlay--;
-	cout << cardToPlay;
-	displayCompHand();
+	//cout << cardToPlay;
+	//displayCompHand();
 	card = compHand.at(cardToPlay);
 	cardIndex = cardToPlay;
 	return true;
@@ -103,8 +106,7 @@ void ComputerPlayer::addToComp(BaseCardClass card)
 
 void ComputerPlayer::displayCompHand()
 {
-	for (size_t i = 0; i < compHand.size(); i++)
-	{
+	for (size_t i = 0; i < compHand.size(); i++){
 		cout << "\nComputers hand" << compHand.at(i).getCardType()<< i << endl;
 	}
 	//for (BaseCardClass card: getCompHand())

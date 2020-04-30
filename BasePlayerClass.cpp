@@ -1,13 +1,16 @@
 #include "pch.h"
+#include <fstream>
 #include <string>
 #include "BasePlayerClass.h"
 #include <iostream>
 
 using namespace std;
 
+ofstream outputFile;
 
 BasePlayerClass::BasePlayerClass()
 {
+	outputFile.open("GameFile.txt",fstream::app);
 }
 
 void BasePlayerClass::cardAffect()
@@ -41,6 +44,7 @@ void BasePlayerClass::setPlayerHand(vector<BaseCardClass> card)
 bool BasePlayerClass::playerSelectCard(int amount) {
 	if (amount <= getPlayerHand().size()) {
 	cout << "choosen card    " << getPlayerHand().at(amount-1).getCardType() << endl;
+	outputFile << "choosen card    " << getPlayerHand().at(amount - 1).getCardType() << endl;
 	//playersHand.erase(playersHand.begin() + (amount-1));
 	return true;
 	}
@@ -65,10 +69,12 @@ void BasePlayerClass::displayPlayerPoints()
 
 void BasePlayerClass::displayHand()
 {
-	cout << "these are your card\n";
 	for (BaseCardClass c : getPlayerHand()) {
 		cout <<  c.getCardType();
+		outputFile << c.getCardType();
+
 	}
+	outputFile << "\n";
 	cout << "\n";
 }
 

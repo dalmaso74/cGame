@@ -16,6 +16,8 @@ public:
 	vector <BaseCardClass> getMinusCard(int amount);
 	vector <BaseCardClass> getPlusCard(int amount);
 	vector <BaseCardClass> getstealCard(int amount);
+	vector <BaseCardClass> getSwapCard(int amount);
+
 	void displayDeck();
 		
 

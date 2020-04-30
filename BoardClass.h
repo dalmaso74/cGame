@@ -14,7 +14,7 @@ public:
 	int cardEffectOnByPlayer(BaseCardClass card, BasePlayerClass &player, ComputerPlayer &CompPlayer);
 	void setBuilder(BuilderClass* builder);
 	
-	void buildDeck(int plus,int minus, int steal);
+	void buildDeck(int plus,int minus,int swap,int steal);
 	void swapImplemantation(BasePlayerClass &player,ComputerPlayer &comPlayer);
 	ofstream outputFile;
 

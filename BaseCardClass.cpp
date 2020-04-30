@@ -20,12 +20,13 @@ BaseCardClass::BaseCardClass(string name)
 
 int BaseCardClass::plusCardAction(int playerPoints)
 {
+	//adding value of players Point
 	return playerPoints + cardValue;
-	//playersPoints = playersPoints + cardValue;
 }
 
 int BaseCardClass::minusCardAction(int playerPoints)
 {
+	//minus value off players Point
 	int newplayerPoints;
 
 	newplayerPoints = playerPoints - cardValue;
@@ -48,6 +49,7 @@ void BaseCardClass::setCardpoint(int newCardValue)
 
 int BaseCardClass::addPoints(int playerPoints)
 {
+	//add point that will be used by the steal card
 	return playerPoints + 1;
 
 }
@@ -58,7 +60,7 @@ int BaseCardClass::getCardPoints()
 }
 
 string BaseCardClass::getCardType()
-{
+{//rerutn the cards name 
 	return cardType;
 }
 

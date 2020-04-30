@@ -23,7 +23,7 @@ int main()
 	DeckBuilder* deckBuilder = new DeckBuilder();
 	BoardClass boardClass = BoardClass();
 	boardClass.setBuilder(deckBuilder);
-	boardClass.buildDeck(8,8,4);
+	boardClass.buildDeck(8,7,3,2);
 	Deck deck = *deckBuilder->getDeck();
 	
 	int cardToPlay;
@@ -47,6 +47,7 @@ int main()
 	
 	while (player.getPlayerHand().size() < 5) {
 
+			
 		//player.displayHand();
 		if (player.getPlayerHand().size() > 0) {
 			cout << "Select more cards for your hand " << endl;
@@ -63,7 +64,7 @@ int main()
 
 
 		cin >> amountOfCard;
-		if (amountOfCard > 5 || player.getPlayerHand().size() + amountOfCard > 5|| userInputs >=4) {
+		if (amountOfCard > 5 || player.getPlayerHand().size() + amountOfCard > 5|| userInputs >=5) {
 			cout << "Wrong value Please try again\n" << endl;
 			continue;
 		}
@@ -78,98 +79,76 @@ int main()
 		case 3:
 			player.drawFromDeck(deck.getstealCard(amountOfCard));
 			break;
+		case 4:
+			player.drawFromDeck(deck.getSwapCard(amountOfCard));
+			break;
 		default:
 			break;
 		}
-
 		
-				for (BaseCardClass c : player.getPlayerHand()) {
-					cout << c.getCardType();
-					outputFile << c.getCardType();
-				}
-		
-				outputFile << "   these are you choosen card";
-				cout << ":have been added to your hand" << endl;
-//		cout << player.getPlayerHand().size();
+		player.displayHand();
+		outputFile <<" these are you choosen card" <<endl;
+		cout << ":have been added to your hand" << endl;
+		//cout << player.getPlayerHand().size();
 		//outputFile.close();
 	}
 		
 	if (player.getPlayerHand().size() >= 5) {
 
-
-			while (player.getPlayerHand().size() > 0 || comPlayer.getCompHand().size()>0)
-			{
+			while (player.getPlayerHand().size() > 0 || comPlayer.getCompHand().size()>0){	
 				//ofstream outputFile;
 				printClass.printEndround();
 				player.displayPlayerPoints();
-				cout << "Computer Player Points  " << comPlayer.getComputerPoints() << endl;
 				outputFile << "Computer player Points    " << comPlayer.getComputerPoints() << endl;
 				outputFile << "Your Points   " << player.getPlayerPoints()<<endl;
+				cout << "Computer Player Points  " << comPlayer.getComputerPoints() << endl;
 				BaseCardClass card = BaseCardClass();
 				int cardIndex;
-				if (comPlayer.getSelectedCard(card,cardIndex))
-				{
-					board.cardEffectOnByCompPlayer(card, player, comPlayer);
-					cout << "\nCurrent Computer Points"<< comPlayer.getComputerPoints()<< endl;
-					cout <<"cardIndex" <<cardIndex;
-					if (cardIndex != 0 )
-					{
-					comPlayer.compHand.erase(comPlayer.compHand.begin() + cardIndex);
 
+				if (comPlayer.getSelectedCard(card,cardIndex)){
+					board.cardEffectOnByCompPlayer(card, player, comPlayer);
+					
+					if (cardIndex != 0 ){
+						comPlayer.compHand.erase(comPlayer.compHand.begin() + cardIndex);
 					}
-					else
-					{
+					else{
 						comPlayer.compHand.erase(comPlayer.compHand.begin());
 					}
+					
 				}
 				else
 				{
 					cout << "empty" << endl;
 				}
-				if (player.getPlayerHand().size() > 0)
-				{
-					player.displayHand();
-					outputFile << "\n" << "what card do you want to play";
+				if (player.getPlayerHand().size() > 0){
+					outputFile << "\n"<<endl << "what card do you want to play"<<endl;
 					cout << "\n" << endl << "what card do you wanna play" << endl;
+					player.displayHand();
 
 					cin >> cardToPlay;
 					//comPlayer.displayCompHand();
 					if (player.playerSelectCard(cardToPlay)) {
-						outputFile << "you played " << player.playerSelectCard(cardToPlay)<<endl;
 						if (player.getPlayerHand().at(cardToPlay-1).getCardType()=="Swap")
 						{
-							BaseCardClass swap = player.getPlayerHand().at(cardToPlay - 1);
+							BaseCardClass swap = player.getPlayerHand().at(cardToPlay -1);
 							player.removeCard(cardToPlay);
 							board.cardEffectOnByPlayer(swap, player, comPlayer);
 						}
 						else
-						{
-							board.cardEffectOnByPlayer(player.getPlayerHand().at(cardToPlay - 1), player, comPlayer);
+						{	
+							board.cardEffectOnByPlayer(player.getPlayerHand().at(cardToPlay -1), player, comPlayer);
 							player.removeCard(cardToPlay);
-							cout << "gerge is gat";
+							
 						}
 					}
-
-
 				}
-				else
-				{
+				else{
 					//cout << "Your hand is empty" << endl;
 				}
-
 			}
 			printClass.diplayWinner(player,comPlayer);
 			printClass.printEndGame();
-			outputFile.close();
 		}
-
-	
+			outputFile.close();
 }
 
-			/*	for (int i = 0; i < player.getPlayerHand().size(); i++){
-					cardToPlay == player.getPlayerHand();{}
-					cout << cardToPlay;*/
-					//	}
-						//		if (player.getPlayerHand().size() >= cardToPlay){
-						//			cardToPlay = player.getPlayerHand().size();
-						//		}

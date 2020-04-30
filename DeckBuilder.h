@@ -10,7 +10,7 @@ public:
 	void producePartA(int amount) const override;
 	void producePartB(int amount) const override;
 	void producePartC(int amount) const override;
-
+	void producePartD(int amount) const override;
 	Deck* getDeck();
 };
 

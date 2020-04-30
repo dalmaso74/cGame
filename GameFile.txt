@@ -1,12 +1,32 @@
 
+Computer Played  Plus
+
+Player Played  Plus
+
+Computer Played  Plus
+
+Player Played  Plus
+
+Computer Played  Steal
+
+Player Played  Plus
+
 Computer Played  Minus
--------New round---------------------------
+Card to steal
+nd---------------------------
 
 ---------------------------------New round---------------------------
 
-sSwap   these are you choosen cardComputer player Points    10
-Your Points   10
+you want to play
+Computer player Points    17
+Your Points   17
 
-what card do you want to playyou played 1
-Computer player Points    10
-Your Points   6
+
+what card do you want to play
+Computer player Points    17
+Your Points   21
+
+
+what card do you want to play
+Steal
+choosen card    Steal
